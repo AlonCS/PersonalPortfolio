@@ -21,7 +21,7 @@ interface AvatarCardProps {
 const AvatarCard: React.FC<AvatarCardProps> = ({
   profile,
   loading,
-  avatarRing,
+  // avatarRing,
   resumeFileUrl,
 }): JSX.Element => {
   return (

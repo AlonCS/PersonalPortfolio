@@ -6,7 +6,7 @@ const ExternalProjectCard = ({
   externalProjects,
   header,
   loading,
-  googleAnalyticId,
+  // _googleAnalyticId,
 }: {
   externalProjects: SanitizedExternalProject[];
   header: string;
