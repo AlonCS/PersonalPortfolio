@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, FormEvent, ChangeEvent } from 'react';
 import { skeleton } from '../../utils';
 
 const ContactMeCard = ({
@@ -15,7 +15,8 @@ const ContactMeCard = ({
   const [formStatus, setFormStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const handleChange = (e) => {
+  // Add proper type for the change event
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -23,7 +24,8 @@ const ContactMeCard = ({
     });
   };
   
-  const handleSubmit = async (e) => {
+  // Add proper type for the form event
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Prevent multiple submissions
@@ -69,9 +71,11 @@ const ContactMeCard = ({
         setFormStatus('');
       }, 5000);
       
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Failed to send message:', error);
-      setFormStatus(`Failed to send message: ${error.message}. Please try again.`);
+      // Properly handle the error type
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      setFormStatus(`Failed to send message: ${errorMessage}. Please try again.`);
     } finally {
       setIsSubmitting(false);
     }
