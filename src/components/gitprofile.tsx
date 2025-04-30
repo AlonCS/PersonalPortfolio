@@ -30,6 +30,7 @@ import ExternalProjectCard from './external-project-card';
 import BlogCard from './blog-card';
 import Footer from './footer';
 import PublicationCard from './publication-card';
+import ContactMeCard from './contact-me-card';
 
 /**
  * Renders the GitProfile component.
@@ -195,8 +196,8 @@ const GitProfile = ({ config }: { config: Config }) => {
               appliedTheme={theme}
             />
             <div className={`p-4 lg:p-10 min-h-full ${BG_COLOR}`}>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
-                <div className="col-span-1">
+              <div className="grid grid-cols-1 lg:grid-cols-7 gap-6 rounded-box">
+                <div className="col-span-1 lg:col-span-3">
                   <div className="grid grid-cols-1 gap-6">
                     {!sanitizedConfig.themeConfig.disableSwitch && (
                       <ThemeChanger
@@ -244,7 +245,7 @@ const GitProfile = ({ config }: { config: Config }) => {
                     )}
                   </div>
                 </div>
-                <div className="lg:col-span-2 col-span-1">
+                <div className="lg:col-span-4 col-span-1">
                   <div className="grid grid-cols-1 gap-6">
                     {sanitizedConfig.projects.github.display && (
                       <GithubProjectCard
@@ -280,6 +281,9 @@ const GitProfile = ({ config }: { config: Config }) => {
                         blog={sanitizedConfig.blog}
                       />
                     )}
+                    
+                    {/* Contact Me section */}
+                    <ContactMeCard loading={loading} />
                   </div>
                 </div>
               </div>

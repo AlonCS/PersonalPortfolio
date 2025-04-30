@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
-import LazyImage from '../lazy-image';
-import { ga, skeleton } from '../../utils';
+import { skeleton } from '../../utils';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 
 const ExternalProjectCard = ({
@@ -14,6 +13,7 @@ const ExternalProjectCard = ({
   loading: boolean;
   googleAnalyticId?: string;
 }) => {
+  // Render a skeleton placeholder when loading
   const renderSkeleton = () => {
     const array = [];
     for (let index = 0; index < externalProjects.length; index++) {
@@ -31,27 +31,18 @@ const ExternalProjectCard = ({
                         className: 'mb-2 mx-auto',
                       })}
                     </h2>
-                    <div className="avatar w-full h-full">
-                      <div className="w-24 h-24 mask mask-squircle mx-auto">
-                        {skeleton({
-                          widthCls: 'w-full',
-                          heightCls: 'h-full',
-                          shape: '',
-                        })}
-                      </div>
-                    </div>
-                    <div className="mt-2">
+                    <div>
                       {skeleton({
                         widthCls: 'w-full',
                         heightCls: 'h-4',
-                        className: 'mx-auto',
+                        className: 'mb-2 mx-auto',
                       })}
                     </div>
-                    <div className="mt-2 flex items-center flex-wrap justify-center">
+                    <div>
                       {skeleton({
                         widthCls: 'w-full',
                         heightCls: 'h-4',
-                        className: 'mx-auto',
+                        className: 'mb-2 mx-auto',
                       })}
                     </div>
                   </div>
@@ -66,56 +57,25 @@ const ExternalProjectCard = ({
     return array;
   };
 
+  // Render the projects
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
       <a
         className="card shadow-lg compact bg-base-100 cursor-pointer"
         key={index}
         href={item.link}
-        onClick={(e) => {
-          e.preventDefault();
-
-          try {
-            if (googleAnalyticId) {
-              ga.event('Click External Project', {
-                post: item.title,
-              });
-            }
-          } catch (error) {
-            console.error(error);
-          }
-
-          window?.open(item.link, '_blank');
-        }}
+        target="_blank"
+        rel="noreferrer"
       >
         <div className="p-8 h-full w-full">
-          <div className="flex items-center flex-col">
+          <div className="flex flex-col">
             <div className="w-full">
-              <div className="px-4">
-                <div className="text-center w-full">
-                  <h2 className="font-medium text-center opacity-60 mb-2">
-                    {item.title}
-                  </h2>
-                  {item.imageUrl && (
-                    <div className="avatar opacity-90">
-                      <div className="w-24 h-24 mask mask-squircle">
-                        <LazyImage
-                          src={item.imageUrl}
-                          alt={'thumbnail'}
-                          placeholder={skeleton({
-                            widthCls: 'w-full',
-                            heightCls: 'h-full',
-                            shape: '',
-                          })}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  <p className="mt-2 text-base-content text-opacity-60 text-sm text-justify">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+              <h2 className="text-base font-medium mb-2 opacity-80">
+                {item.title}
+              </h2>
+              <p className="text-sm opacity-60">
+                {item.description}
+              </p>
             </div>
           </div>
         </div>

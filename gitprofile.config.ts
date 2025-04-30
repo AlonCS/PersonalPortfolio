@@ -12,7 +12,7 @@ const CONFIG = {
   base: '/PersonalPortfolio/',
   projects: {
     github: {
-      display: true, // Display GitHub projects?
+      display: false, // Display GitHub projects?
       header: 'Github Projects',
       mode: 'automatic', // Mode can be: 'automatic' or 'manual'
       automatic: {
@@ -32,22 +32,7 @@ const CONFIG = {
       header: 'My Projects',
       // To hide the `External Projects` section, keep it empty.
       projects: [
-        {
-          title: 'Project Name',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
-          link: 'https://example.com',
-        },
-        {
-          title: 'Project Name',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
-          link: 'https://example.com',
-        },
+    
       ],
     },
   },
@@ -58,8 +43,8 @@ const CONFIG = {
   },
   social: {
     linkedin: 'ariful-alam',
-    x: 'arif_szn',
-    mastodon: 'arifszn@mastodon.social',
+    x: '',
+    mastodon: '',
     researchGate: '',
     facebook: '',
     instagram: '',
@@ -69,8 +54,8 @@ const CONFIG = {
     udemy: '',
     dribbble: '',
     behance: '',
-    medium: 'arifszn',
-    dev: 'arifszn',
+    medium: '',
+    dev: '',
     stackoverflow: '', // example: '1/jeff-atwood'
     skype: '',
     telegram: '',
@@ -83,57 +68,50 @@ const CONFIG = {
       'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
-    'PHP',
-    'Laravel',
-    'JavaScript',
-    'React.js',
-    'Node.js',
-    'Nest.js',
-    'MySQL',
-    'PostgreSQL',
-    'Git',
-    'Docker',
-    'PHPUnit',
+    'Html',
     'CSS',
-    'Antd',
-    'Tailwind',
+    'JavaScript',
+    'PHP',
+    'React.js',
+    'Docker',
+    'AWS'
   ],
   experiences: [
     {
-      company: 'Company Name',
-      position: 'Position',
-      from: 'September 2021',
+      company: 'Digital nest',
+      position: 'Web Developer',
+      from: 'August 2024',
       to: 'Present',
       companyLink: 'https://example.com',
     },
     {
-      company: 'Company Name',
-      position: 'Position',
-      from: 'July 2019',
-      to: 'August 2021',
+      company: 'Farm-ng',
+      position: 'Sales and Education',
+      from: 'July 2024',
+      to: 'November 2024',
       companyLink: 'https://example.com',
     },
   ],
   certifications: [
     {
-      name: 'Lorem ipsum',
-      body: 'Lorem ipsum dolor sit amet',
-      year: 'March 2022',
+      name: 'AWS Certified Cloud Practitioner',
+      body: 'Amazon Web Services (AWS)',
+      year: 'April 2024',
       link: 'https://example.com',
     },
   ],
   educations: [
     {
-      institution: 'Institution Name',
-      degree: 'Degree',
-      from: '2015',
-      to: '2019',
+      institution: 'Hartnell College',
+      degree: 'Associate of Arts in Mathematics',
+      from: 'August 2024',
+      to: 'Present',
     },
     {
-      institution: 'Institution Name',
-      degree: 'Degree',
-      from: '2012',
-      to: '2014',
+      institution: 'Alisal High School',
+      degree: 'High school Diploma',
+      from: 'August 2020',
+      to: 'May 2024',
     },
   ],
   publications: [
@@ -157,18 +135,10 @@ const CONFIG = {
     },
   ],
   // Display articles from your medium or dev account. (Optional)
-  blog: {
-    source: 'dev', // medium | dev
-    username: 'arifszn', // to hide blog section, keep it empty
-    limit: 2, // How many articles to display. Max is 10.
-  },
-  googleAnalytics: {
-    id: '', // GA3 tracking id/GA4 tag id UA-XXXXXXXXX-X | G-XXXXXXXXXX
-  },
-  // Track visitor interaction and behavior. https://www.hotjar.com
-  hotjar: {
-    id: '',
-    snippetVersion: 6,
+  bblog: {
+    source: 'dev', 
+    username: '', // Empty username will hide this section
+    limit: 2,
   },
   themeConfig: {
     defaultTheme: 'lofi',
@@ -230,15 +200,52 @@ const CONFIG = {
       'base-100': '#E3E3ED',
       '--rounded-box': '3rem',
       '--rounded-btn': '3rem',
-    },
+    },experiences: [
+      {
+        company: 'Digital nest',
+        position: 'Web Developer',
+        from: 'August 2024',
+        to: 'Present',
+        companyLink: 'https://example.com',
+      },
+      {
+        company: 'Farm-ng',
+        position: 'Sales and Education',
+        from: 'July 2024',
+        to: 'November 2024',
+        companyLink: 'https://example.com',
+      },
+    ],
+    certifications: [
+      {
+        name: 'AWS Certified Cloud Practitioner',
+        body: 'Amazon Web Services (AWS)',
+        year: 'April 2024',
+        link: 'https://example.com',
+      },
+    ],
+    educations: [
+      {
+        institution: 'Hartnell College',
+        degree: 'Associate of Arts in Mathematics',
+        from: 'August 2024',
+        to: 'Present',
+      },
+      {
+        institution: 'Alisal High School',
+        degree: 'High school Diploma',
+        from: 'August 2020',
+        to: 'May 2024',
+      },
+    ],
   },
 
   // Optional Footer. Supports plain text or HTML.
-  footer: `Made with <a 
-      class="text-primary" href="https://github.com/arifszn/gitprofile"
-      target="_blank"
-      rel="noreferrer"
-    >GitProfile</a> and ❤️`,
+  // footer: `Made with <a 
+  //     class="text-primary" href="https://github.com/arifszn/gitprofile"
+  //     target="_blank"
+  //     rel="noreferrer"
+  //   >GitProfile</a> and ❤️`,
 
   enablePWA: true,
 };

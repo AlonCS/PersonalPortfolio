@@ -26,72 +26,76 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
 }): JSX.Element => {
   return (
     <div className="card shadow-lg compact bg-base-100">
-      <div className="grid place-items-center py-8">
-        {loading || !profile ? (
-          <div className="avatar opacity-90">
-            <div className="mb-8 rounded-full w-32 h-32">
+      <div className="p-8">
+        <div className="flex flex-row items-start gap-8">
+          {/* Avatar image */}
+          {loading || !profile ? (
+            <div className="w-44 h-48 rounded-lg overflow-hidden flex-shrink-0">
               {skeleton({
                 widthCls: 'w-full',
                 heightCls: 'h-full',
-                shape: '',
+                shape: 'rounded-lg',
               })}
             </div>
-          </div>
-        ) : (
-          <div className="avatar opacity-90">
-            <div
-              className={`mb-8 rounded-full w-32 h-32 ${
-                avatarRing
-                  ? 'ring ring-primary ring-offset-base-100 ring-offset-2'
-                  : ''
-              }`}
-            >
-              {
-                <LazyImage
-                  src={profile.avatar ? profile.avatar : FALLBACK_IMAGE}
-                  alt={profile.name}
-                  placeholder={skeleton({
-                    widthCls: 'w-full',
-                    heightCls: 'h-full',
-                    shape: '',
-                  })}
-                />
-              }
+          ) : (
+            <div className="w-44 h-48 rounded-lg overflow-hidden flex-shrink-0">
+              <LazyImage
+                src={profile.avatar ? profile.avatar : FALLBACK_IMAGE}
+                alt={profile.name}
+                placeholder={skeleton({
+                  widthCls: 'w-full',
+                  heightCls: 'h-full',
+                  shape: 'rounded-lg',
+                })}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
-        )}
-        <div className="text-center mx-auto px-8">
-          <h5 className="font-bold text-2xl">
+          )}
+          
+          {/* Bio content */}
+          <div className="flex-1">
             {loading || !profile ? (
-              skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
+              <div>
+                {skeleton({ widthCls: 'w-48', heightCls: 'h-8', className: 'mb-4' })}
+                {skeleton({ widthCls: 'w-full', heightCls: 'h-4', className: 'mb-2' })}
+                {skeleton({ widthCls: 'w-full', heightCls: 'h-4', className: 'mb-2' })}
+                {skeleton({ widthCls: 'w-full', heightCls: 'h-4' })}
+              </div>
             ) : (
-              <span className="text-base-content opacity-70">
-                {profile.name}
-              </span>
+              <div>
+                <h4 className="text-lg font-medium mb-2">Nice to meet you all.</h4>
+                <p className="mb-2 text-base-content text-opacity-80 text-sm">
+                  My name is {profile.name} and I'm a Web Developer, with 4 years of experience in Robotics
+                </p>
+                <p className="mb-2 text-base-content text-opacity-80 text-sm">
+                  I am studying Math and Computer Science at Hartnell college.
+                </p>
+                <p className="text-base-content text-opacity-80 text-sm">
+                  Currently working as a Web Developer at Digital nest, within the bizznest web development team, developing and maintaining responsive websites.
+                </p>
+              </div>
             )}
-          </h5>
-          <div className="mt-3 text-base-content text-opacity-60 font-mono">
-            {loading || !profile
-              ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
-              : profile.bio}
+            
+            {resumeFileUrl &&
+              (loading ? (
+                <div className="mt-4">
+                  {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
+                </div>
+              ) : (
+                <div className="mt-4">
+                  <a
+                    href={resumeFileUrl}
+                    target="_blank"
+                    className="btn btn-outline btn-sm text-xs opacity-50"
+                    download
+                    rel="noreferrer"
+                  >
+                    Download Resume
+                  </a>
+                </div>
+              ))}
           </div>
         </div>
-        {resumeFileUrl &&
-          (loading ? (
-            <div className="mt-6">
-              {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
-            </div>
-          ) : (
-            <a
-              href={resumeFileUrl}
-              target="_blank"
-              className="btn btn-outline btn-sm text-xs mt-6 opacity-50"
-              download
-              rel="noreferrer"
-            >
-              Download Resume
-            </a>
-          ))}
       </div>
     </div>
   );
