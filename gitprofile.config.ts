@@ -42,7 +42,7 @@ const CONFIG = {
     imageURL: '',
   },
   social: {
-    linkedin: 'ariful-alam',
+    linkedin: 'alonzo-cabrera-8530a0297',
     x: '',
     mastodon: '',
     researchGate: '',
@@ -59,18 +59,21 @@ const CONFIG = {
     stackoverflow: '', // example: '1/jeff-atwood'
     skype: '',
     telegram: '',
-    website: 'https://www.arifszn.com',
+    website: '',
     phone: '',
-    email: 'arifulalamszn@gmail.com',
+    email: 'alonzocabrera48@gmail.com',
   },
   resume: {
     fileUrl:
-      'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Empty fileUrl will hide the `Download Resume` button.
+      'https://drive.google.com/file/d/1MyvpM9W4ydCwp0TVwa0ICO448cv3FAzI/view?usp=drive_link', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
     'Html',
     'CSS',
     'JavaScript',
+    'Python',
+    'Firebase',
+    'Git',
     'PHP',
     'React.js',
     'Docker',
