@@ -1,15 +1,16 @@
 import { Fragment } from 'react';
 import { skeleton } from '../../utils';
-
+import { SanitizedPublication } from '../../interfaces/sanitized-config';
 /**
  * Renders a custom projects card component with predefined projects.
  * @param loading - A boolean indicating if the component is loading.
  * @returns JSX element representing the CustomProjectsCard.
  */
-const CustomProjectsCard = ({
+const PublicationCard = ({
   loading,
 }: {
   loading: boolean;
+  publications: SanitizedPublication[];
 }): JSX.Element => {
   // Software Projects section
   const softwareProjects = [
@@ -183,4 +184,4 @@ const CustomProjectsCard = ({
   );
 };
 
-export default CustomProjectsCard;
+export default PublicationCard;
